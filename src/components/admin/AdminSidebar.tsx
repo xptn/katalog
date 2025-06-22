@@ -6,7 +6,8 @@ import {
   Tags, 
   Settings, 
   X,
-  Store
+  Store,
+  BarChart3
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -19,9 +20,10 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
 
   const menuItems = [
     { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/admin/products', icon: Package, label: 'Products' },
-    { path: '/admin/categories', icon: Tags, label: 'Categories' },
-    { path: '/admin/settings', icon: Settings, label: 'Settings' },
+    { path: '/admin/products', icon: Package, label: 'Produk' },
+    { path: '/admin/categories', icon: Tags, label: 'Kategori' },
+    { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
+    { path: '/admin/settings', icon: Settings, label: 'Pengaturan' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -38,18 +40,23 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
 
       {/* Sidebar */}
       <aside className={`
-        fixed top-0 left-0 z-40 w-64 h-full bg-white border-r border-gray-200 transition-transform duration-300 ease-in-out
+        fixed top-0 left-0 z-40 w-64 h-full bg-white border-r-2 border-xptn-yellow transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0 lg:static lg:inset-0
       `}>
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <Link to="/" className="flex items-center space-x-2">
-            <Store className="h-8 w-8 text-indigo-600" />
-            <span className="text-xl font-bold text-gray-900">ProductHub</span>
+        <div className="flex items-center justify-between p-4 border-b border-xptn-border">
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="w-10 h-10 bg-xptn-yellow rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+              <Store className="h-6 w-6 text-xptn-dark" />
+            </div>
+            <div>
+              <span className="text-xl font-bold text-xptn-dark">X-Katalog</span>
+              <div className="text-xs text-gray-500">Admin Panel</div>
+            </div>
           </Link>
           <button
             onClick={onClose}
-            className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            className="lg:hidden p-2 rounded-md text-xptn-dark hover:text-xptn-yellow hover:bg-yellow-50 transition-colors duration-200"
           >
             <X className="h-5 w-5" />
           </button>
@@ -64,14 +71,14 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
                 to={item.path}
                 onClick={() => onClose()}
                 className={`
-                  flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200
+                  flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 group
                   ${isActive(item.path)
-                    ? 'bg-indigo-100 text-indigo-700 border-r-2 border-indigo-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-xptn-yellow text-xptn-dark shadow-md border-2 border-xptn-yellow-hover'
+                    : 'text-xptn-dark hover:bg-yellow-50 hover:text-xptn-yellow border-2 border-transparent hover:border-xptn-yellow'
                   }
                 `}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
                 <span className="font-medium">{item.label}</span>
               </Link>
             );
@@ -81,10 +88,10 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
         <div className="absolute bottom-4 left-4 right-4">
           <Link
             to="/"
-            className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors duration-200"
+            className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-600 hover:text-xptn-yellow hover:bg-yellow-50 rounded-lg transition-colors duration-200"
           >
             <Store className="h-4 w-4" />
-            <span>View Store</span>
+            <span>Lihat Katalog</span>
           </Link>
         </div>
       </aside>

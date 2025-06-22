@@ -14,36 +14,37 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ selectedCategory, onCat
   };
 
   return (
-    <section id="categories" className="py-16 bg-gray-50">
+    <section id="categories" className="py-16 bg-gradient-to-br from-yellow-50 to-orange-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+        <div className="text-center mb-12 animate-slide-up">
+          <h2 className="text-3xl font-bold text-xptn-dark mb-4">Jelajahi Berdasarkan Kategori</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover products across our carefully curated categories
+            Temukan produk yang Anda butuhkan dari 10 kategori utama kami
           </p>
         </div>
         
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <button
             onClick={() => onCategoryChange('all')}
-            className={`px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center space-x-2 ${
+            className={`px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center space-x-2 transform hover:scale-105 ${
               selectedCategory === 'all'
-                ? 'bg-indigo-600 text-white shadow-lg'
-                : 'bg-white text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 border border-gray-200'
+                ? 'bg-xptn-yellow text-xptn-dark shadow-lg border-2 border-xptn-yellow-hover'
+                : 'bg-white text-xptn-dark hover:bg-yellow-50 hover:text-xptn-yellow border-2 border-xptn-border hover:border-xptn-yellow'
             }`}
           >
-            <span>All Products</span>
+            <span>Semua Produk</span>
           </button>
           
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <button
               key={category.id}
               onClick={() => onCategoryChange(category.name)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center space-x-2 ${
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center space-x-2 transform hover:scale-105 animate-scale-in ${
                 selectedCategory === category.name
-                  ? 'bg-indigo-600 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 border border-gray-200'
+                  ? 'bg-xptn-yellow text-xptn-dark shadow-lg border-2 border-xptn-yellow-hover'
+                  : 'bg-white text-xptn-dark hover:bg-yellow-50 hover:text-xptn-yellow border-2 border-xptn-border hover:border-xptn-yellow'
               }`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {getIcon(category.icon)}
               <span>{category.name}</span>

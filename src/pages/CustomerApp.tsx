@@ -16,7 +16,6 @@ function CustomerApp() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
-  const [cartCount] = useState(0);
 
   // Filter products based on category and search query
   const filteredProducts = useMemo(() => {
@@ -25,7 +24,8 @@ function CustomerApp() {
       const matchesSearch = searchQuery === '' || 
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+        product.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        product.rackLocation.toLowerCase().includes(searchQuery.toLowerCase());
       
       return matchesCategory && matchesSearch;
     });
@@ -40,7 +40,6 @@ function CustomerApp() {
     <div className="min-h-screen bg-gray-50">
       <CustomerHeader 
         onSearch={setSearchQuery}
-        cartCount={cartCount}
       />
       
       <Routes>

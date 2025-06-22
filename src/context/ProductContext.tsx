@@ -5,10 +5,11 @@ import { mockProducts } from '../data/mockData';
 interface ProductContextType {
   products: Product[];
   loading: boolean;
-  addProduct: (product: Omit<Product, 'id' | 'createdAt'>) => Product;
+  addProduct: (product: Omit<Product, 'id' | 'createdAt' | 'viewCount'>) => Product;
   updateProduct: (id: string, updates: Partial<Product>) => void;
   deleteProduct: (id: string) => void;
   getProductById: (id: string) => Product | undefined;
+  incrementViewCount: (id: string) => void;
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -37,11 +38,12 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     }, 500);
   }, []);
 
-  const addProduct = (product: Omit<Product, 'id' | 'createdAt'>) => {
+  const addProduct = (product: Omit<Product, 'id' | 'createdAt' | 'viewCount'>) => {
     const newProduct: Product = {
       ...product,
       id: Date.now().toString(),
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      viewCount: 0
     };
     setProducts(prev => [newProduct, ...prev]);
     return newProduct;
@@ -63,13 +65,24 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     return products.find(product => product.id === id);
   };
 
+  const incrementViewCount = (id: string) => {
+    setProducts(prev => 
+      prev.map(product => 
+        product.id === id 
+          ? { ...product, viewCount: product.viewCount + 1 }
+          : product
+      )
+    );
+  };
+
   const value = {
     products,
     loading,
     addProduct,
     updateProduct,
     deleteProduct,
-    getProductById
+    getProductById,
+    incrementViewCount
   };
 
   return (

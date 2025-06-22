@@ -13,6 +13,8 @@ export interface Product {
   discount?: number;
   tags: string[];
   createdAt: string;
+  viewCount: number;
+  rackLocation: string;
 }
 
 export interface Category {
@@ -20,4 +22,11 @@ export interface Category {
   name: string;
   description: string;
   icon: string;
+}
+
+export interface ProductAnalytics {
+  totalViews: number;
+  topViewedProducts: Product[];
+  categoryViews: { [key: string]: number };
+  dailyViews: { date: string; views: number }[];
 }

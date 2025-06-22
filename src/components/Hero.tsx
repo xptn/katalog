@@ -1,76 +1,93 @@
 import React from 'react';
-import { ArrowRight, Star } from 'lucide-react';
+import { Search, Package, CheckCircle, Eye } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="bg-gradient-to-br from-indigo-50 via-white to-emerald-50 py-20">
+    <section id="home" className="bg-gradient-to-br from-yellow-50 via-white to-orange-50 py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           {/* Content */}
-          <div className="mb-12 lg:mb-0">
-            <div className="flex items-center mb-4">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-amber-400 fill-current" />
-                ))}
+          <div className="mb-12 lg:mb-0 animate-slide-up">
+            <div className="flex flex-wrap gap-3 mb-6">
+              <div className="flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                Data stok diperbarui setiap hari
               </div>
-              <span className="ml-2 text-sm text-gray-600">Trusted by 10,000+ customers</span>
+              <div className="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                <Package className="h-4 w-4 mr-1" />
+                12.500+ produk terdaftar
+              </div>
+              <div className="flex items-center bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+                <Search className="h-4 w-4 mr-1" />
+                Pencarian cepat & akurat
+              </div>
             </div>
             
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Discover Amazing
-              <span className="text-indigo-600"> Products</span>
+            <h1 className="text-4xl lg:text-6xl font-bold text-xptn-dark mb-6 leading-tight">
+              X-Katalog
+              <span className="block text-xptn-yellow">Katalog Digital</span>
+              <span className="block text-2xl lg:text-3xl font-medium text-gray-600">Toko XPTN</span>
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Explore our curated collection of premium products designed to enhance your lifestyle. 
-              From cutting-edge electronics to stylish fashion, we have everything you need.
+              Telusuri ribuan produk berkualitas yang tersedia di toko XPTN. 
+              Cek ketersediaan, harga, dan lokasi rak dengan satu klik.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-200 flex items-center justify-center group">
-                Shop Now
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              <button className="bg-xptn-yellow text-xptn-dark px-8 py-4 rounded-lg font-semibold hover:bg-xptn-yellow-hover transition-all duration-200 flex items-center justify-center group transform hover:scale-105">
+                Jelajahi Katalog
+                <Search className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
               </button>
-              <button className="border-2 border-indigo-600 text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-600 hover:text-white transition-all duration-200">
-                Learn More
+              <button className="border-2 border-xptn-yellow text-xptn-dark px-8 py-4 rounded-lg font-semibold hover:bg-xptn-yellow hover:text-xptn-dark transition-all duration-200">
+                Pelajari Lebih Lanjut
               </button>
             </div>
             
             <div className="mt-12 grid grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">10K+</div>
-                <div className="text-sm text-gray-600">Happy Customers</div>
+              <div className="text-center animate-bounce-gentle">
+                <div className="text-2xl font-bold text-xptn-dark">12.5K+</div>
+                <div className="text-sm text-gray-600">Produk Tersedia</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">500+</div>
-                <div className="text-sm text-gray-600">Products</div>
+              <div className="text-center animate-bounce-gentle" style={{ animationDelay: '0.2s' }}>
+                <div className="text-2xl font-bold text-xptn-dark">10</div>
+                <div className="text-sm text-gray-600">Kategori Utama</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">99%</div>
-                <div className="text-sm text-gray-600">Satisfaction</div>
+              <div className="text-center animate-bounce-gentle" style={{ animationDelay: '0.4s' }}>
+                <div className="text-2xl font-bold text-xptn-dark">99%</div>
+                <div className="text-sm text-gray-600">Akurasi Stok</div>
               </div>
             </div>
           </div>
 
           {/* Image */}
-          <div className="relative">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+          <div className="relative animate-fade-in">
+            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 bg-gradient-to-br from-xptn-yellow to-orange-200">
               <img
-                src="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg"
-                alt="Featured Products"
+                src="https://images.pexels.com/photos/1005638/pexels-photo-1005638.jpeg"
+                alt="Toko XPTN - Produk Berkualitas"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-6 transform -rotate-6 hover:rotate-0 transition-transform duration-500">
+            
+            {/* Floating Cards */}
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-6 transform -rotate-6 hover:rotate-0 transition-transform duration-500 animate-scale-in">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
-                  <Star className="h-6 w-6 text-emerald-600 fill-current" />
+                <div className="w-12 h-12 bg-xptn-yellow rounded-full flex items-center justify-center">
+                  <CheckCircle className="h-6 w-6 text-xptn-dark" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Premium Quality</div>
-                  <div className="text-sm text-gray-600">Guaranteed</div>
+                  <div className="font-semibold text-xptn-dark">Kualitas Terjamin</div>
+                  <div className="text-sm text-gray-600">Produk Original</div>
                 </div>
+              </div>
+            </div>
+
+            <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 transform rotate-6 hover:rotate-0 transition-transform duration-500 animate-scale-in" style={{ animationDelay: '0.3s' }}>
+              <div className="flex items-center space-x-2">
+                <Eye className="h-5 w-5 text-xptn-yellow" />
+                <div className="text-sm font-medium text-xptn-dark">Stok Real-time</div>
               </div>
             </div>
           </div>
